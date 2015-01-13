@@ -44,7 +44,7 @@ public class JettyApplicationServer {
     // XXX
     // If this is not called, JMH cannot finish the
     // benchmark.
-    // JerseyApplication.stop();
+    JerseyApplication.stop();
 
     // Shut down Jetty server.
     try {

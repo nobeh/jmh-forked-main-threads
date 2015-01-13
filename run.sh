@@ -4,4 +4,5 @@
 
 mvn clean install
 
-java -Xms4096m -Xmx8192m -jar target/benchmarks.jar
+java -Xms4096m -Xmx8192m -jar target/benchmarks.jar org.openjdk.jmh.bugreport.benchmark.ApplicationBenchmark
+

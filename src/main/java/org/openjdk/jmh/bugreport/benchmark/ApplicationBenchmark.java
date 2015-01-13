@@ -16,6 +16,7 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.bugreport.application.JettyApplicationServer;
+import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -30,7 +31,7 @@ import org.openjdk.jmh.runner.options.VerboseMode;
 @Warmup(iterations = 4)
 @Measurement(iterations = 8)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-@BenchmarkMode(Mode.SampleTime)
+@BenchmarkMode(Mode.Throughput)
 public class ApplicationBenchmark {
 
   private JettyApplicationServer server;
@@ -56,7 +57,8 @@ public class ApplicationBenchmark {
 
   public static void main(String[] args) throws RunnerException {
     Options options =
-        new OptionsBuilder().include(ApplicationBenchmark.class.getSimpleName())
+        new OptionsBuilder().include(".*" + ApplicationBenchmark.class.getSimpleName() + ".*")
+            .resultFormat(ResultFormatType.CSV).result("/tmp/jmh.csv")
             .verbosity(VerboseMode.NORMAL).build();
 
     new Runner(options).run();
