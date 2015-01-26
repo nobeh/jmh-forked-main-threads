@@ -1,3 +1,5 @@
+*NOTE* Fixed in https://bugs.openjdk.java.net/browse/CODETOOLS-7901244
+
 This is a sample project to demonstrate if the application in `ForkedMain` cannot completely shut down the running threads, then JMH is not able to finalize and complete the benchmark.
 
 To run the sample, you need to have Java 8. Simply run:
